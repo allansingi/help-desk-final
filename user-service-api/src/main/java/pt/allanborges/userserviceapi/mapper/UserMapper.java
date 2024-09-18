@@ -1,6 +1,8 @@
 package pt.allanborges.userserviceapi.mapper;
 
-import models.reponses.UserResponse;
+
+import models.requests.CreateUserRequest;
+import models.responses.UserResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import pt.allanborges.userserviceapi.entity.User;
@@ -16,5 +18,8 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.IGNORE;
 public interface UserMapper {
 
     UserResponse fromEntity(final User entity);
+
+    @Mapping(target = "id", ignore = true)
+    User fromRequest(CreateUserRequest createUserRequest);
 
 }

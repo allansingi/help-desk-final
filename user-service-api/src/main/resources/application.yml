@@ -8,5 +8,5 @@ spring:
 springdoc:
   openapi:
     title: 'User Service API'
-    description: 'Componen responsible for user management'
+    description: 'Component responsible for user management'
     version: '1.0.0'
