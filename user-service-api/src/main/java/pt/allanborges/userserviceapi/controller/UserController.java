@@ -20,7 +20,7 @@ import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@Tag(name = "UserControler", description = "Controller responsible for user operations")
+@Tag(name = "UserController", description = "Controller responsible for user operations")
 @RequestMapping("api/users")
 public interface UserController {
 
@@ -61,7 +61,7 @@ public interface UserController {
     ResponseEntity<Void> save(@Valid @RequestBody final CreateUserRequest createUserRequest);
 
 
-    @Operation(summary = "Find user by id")
+    @Operation(summary = "Find all users")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Users found",
                     content =@Content(

@@ -22,7 +22,7 @@ public interface UserMapper {
     UserResponse fromEntity(final User entity);
 
     @Mapping(target = "id", ignore = true)
-    User fromRequest(CreateUserRequest createUserRequest);
+    User fromRequest(CreateUserRequest request);
 
     @Mapping(target = "id", ignore = true)
     User update(UpdateUserRequest updateUserRequest, @MappingTarget User entity);
