@@ -1,4 +1,4 @@
-package pt.allanborges.authserviceapi.security.dtos;
+package pt.allanborges.authserviceapi.security;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -7,6 +7,7 @@ import models.responses.AuthenticationResponse;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import pt.allanborges.authserviceapi.security.dtos.UserDetailsDTO;
 import pt.allanborges.authserviceapi.utils.JWTUtils;
 
 @Log4j2
@@ -37,8 +38,8 @@ public class JWTAuthenticationImpl {
         log.info("Successfully authenticated user: {}", detailsDTO.getUsername());
         final var token = jwtUtils.generateToken(detailsDTO);
         return AuthenticationResponse.builder()
-                .type("JWT")
-                .token("Bearer " + token)
+                .type("Bearer")
+                .token(token)
                 .build();
     }
 
