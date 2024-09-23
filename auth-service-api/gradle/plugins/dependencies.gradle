@@ -17,6 +17,10 @@ dependencies {
         because('Starter para integrar com o MongoDB')
     }
 
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    
+    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+
     implementation ('org.springframework.boot:spring-boot-starter-validation') {
         because('Starter para validação de dados')
     }
