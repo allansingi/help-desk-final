@@ -22,7 +22,7 @@ public enum OrderStatusEnum {
         return Arrays.stream(OrderStatusEnum.values())
                 .filter(orderStatusEnum -> orderStatusEnum.getDescription().equals(description))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Invalid descriptiom: " + description));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid description: " + description));
     }
 
 }

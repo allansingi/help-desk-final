@@ -42,7 +42,7 @@ public class UserService {
                 .toList();
     }
 
-    public UserResponse update(final String id, final UpdateUserRequest request) {
+    public UserResponse update(final String id, UpdateUserRequest request) {
         User entity = find(id);
         verifyIfEmailAlreadyExists(request.email(), id);
         return mapper.fromEntity(
