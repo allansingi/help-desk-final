@@ -9,7 +9,7 @@ import models.responses.OrderResponse;
 import org.springframework.stereotype.Service;
 import pt.allanborges.orderserviceapi.entities.Order;
 import pt.allanborges.orderserviceapi.mapper.OrderMapper;
-import pt.allanborges.orderserviceapi.reositories.OrderRepository;
+import pt.allanborges.orderserviceapi.repositories.OrderRepository;
 import pt.allanborges.orderserviceapi.services.OrderService;
 
 import static java.time.LocalDateTime.now;
@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order findById(final Long id) {
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(
-                "Object not found. Id: " + id + Order.class.getSimpleName()
+                "Object not found. Id: " + id + ", Type: " + Order.class.getSimpleName()
         ));
     }
 
@@ -45,6 +45,11 @@ public class OrderServiceImpl implements OrderService {
             entity.setClosedAt(now());
 
         return mapper.fromEntity(repository.save(entity));
+    }
+
+    @Override
+    public void deleteById(final Long id) {
+        repository.delete(findById(id));
     }
 
 }

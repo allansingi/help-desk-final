@@ -1,4 +1,4 @@
-package pt.allanborges.orderserviceapi.reositories;
+package pt.allanborges.orderserviceapi.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
