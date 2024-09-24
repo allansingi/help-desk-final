@@ -10,6 +10,8 @@ import pt.allanborges.orderserviceapi.controllers.OrderController;
 import pt.allanborges.orderserviceapi.mapper.OrderMapper;
 import pt.allanborges.orderserviceapi.services.OrderService;
 
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
@@ -23,6 +25,13 @@ public class OrderControllerImpl implements OrderController {
     public ResponseEntity<OrderResponse> findById(Long id) {
         return ResponseEntity.ok().body(
                 mapper.fromEntity(service.findById(id))
+        );
+    }
+
+    @Override
+    public ResponseEntity<List<OrderResponse>> findAll() {
+        return ResponseEntity.ok().body(
+                mapper.fromEntities(service.findAll())
         );
     }
 

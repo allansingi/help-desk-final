@@ -12,6 +12,8 @@ import pt.allanborges.orderserviceapi.mapper.OrderMapper;
 import pt.allanborges.orderserviceapi.repositories.OrderRepository;
 import pt.allanborges.orderserviceapi.services.OrderService;
 
+import java.util.List;
+
 import static java.time.LocalDateTime.now;
 import static models.enums.OrderStatusEnum.CLOSED;
 
@@ -50,6 +52,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteById(final Long id) {
         repository.delete(findById(id));
+    }
+
+    @Override
+    public List<Order> findAll() {
+        return repository.findAll();
     }
 
 }

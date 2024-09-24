@@ -11,6 +11,7 @@ import org.mapstruct.Named;
 import pt.allanborges.orderserviceapi.entities.Order;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static java.time.LocalDateTime.now;
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
@@ -47,4 +48,6 @@ public interface OrderMapper {
     default LocalDateTime mapCreatedAt() {
         return now();
     }
+
+    List<OrderResponse> fromEntities(List<Order> orders);
 }
