@@ -60,19 +60,17 @@ dependencies {
         because('Starter para integração com o Spring Cloud OpenFeign')
     }
 
-    /*
-    implementation('org.springframework.boot:spring-boot-actuator') {
-        because('Monitoramento e gerenciamento de aplicações Spring Boot')
-    }
-
-    implementation('org.springframework.boot:spring-boot-starter-amqp') {
-        because('Starter para integração com o RabbitMQ')
-    }
-
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
         because('Starter para integração com o Eureka Discovery Client')
     }
 
+    /*
+    implementation('org.springframework.boot:spring-boot-actuator') {
+        because('Monitoramento e gerenciamento de aplicações Spring Boot')
+    }
+    implementation('org.springframework.boot:spring-boot-starter-amqp') {
+        because('Starter para integração com o RabbitMQ')
+    }
     implementation('org.springframework.boot:spring-boot-starter-data-redis') {
         because('Starter para integração com o Redis')
     }
