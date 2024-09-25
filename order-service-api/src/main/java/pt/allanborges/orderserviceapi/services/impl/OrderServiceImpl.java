@@ -6,10 +6,12 @@ import models.exceptions.ResourceNotFoundException;
 import models.requests.CreateOrderRequest;
 import models.requests.UpdateOrderRequest;
 import models.responses.OrderResponse;
+import models.responses.UserResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import pt.allanborges.orderserviceapi.clients.UserServiceFeignClient;
 import pt.allanborges.orderserviceapi.entities.Order;
 import pt.allanborges.orderserviceapi.mapper.OrderMapper;
 import pt.allanborges.orderserviceapi.repositories.OrderRepository;
@@ -27,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository repository;
     private final OrderMapper mapper;
+    private final UserServiceFeignClient userServiceFeignClient;
 
     @Override
     public Order findById(final Long id) {
@@ -37,6 +40,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void save(CreateOrderRequest request) {
+        final var requester = validateUserId(request.requesterId());
+        final var customer = validateUserId(request.customerId());
+
+        log.info("Requester: {}", requester);
+        log.info("Customer: {}", customer);
+
         final var entity = repository.save(mapper.fromRequest(request));
         log.info("Order created: {}", entity);
     }
@@ -71,6 +80,10 @@ public class OrderServiceImpl implements OrderService {
                 orderBy
         );
         return repository.findAll(pageRequest);
+    }
+
+    UserResponse validateUserId(final String userId) {
+        return userServiceFeignClient.findById(userId).getBody();
     }
 
 }
