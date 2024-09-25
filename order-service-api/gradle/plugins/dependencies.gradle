@@ -56,8 +56,11 @@ dependencies {
         because('Starter para testes unitários com o Spring Boot')
     }
 
-    /*
+    implementation('org.springframework.cloud:spring-cloud-starter-openfeign') {
+        because('Starter para integração com o Spring Cloud OpenFeign')
+    }
 
+    /*
     implementation('org.springframework.boot:spring-boot-actuator') {
         because('Monitoramento e gerenciamento de aplicações Spring Boot')
     }
@@ -73,11 +76,6 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-redis') {
         because('Starter para integração com o Redis')
     }
-
-    implementation('org.springframework.cloud:spring-cloud-starter-openfeign') {
-        because('Starter para integração com o Spring Cloud OpenFeign')
-    }
-
     */
 
 }
